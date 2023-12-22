@@ -6,7 +6,8 @@ const path = require("path");
 const multer = require("multer");
 const upload = multer({ dest: './public/' });
 const DataController = require("./controller/dataController");
-const FetchController = require("./controller/fetchController")
+const FetchController = require("./controller/fetchController");
+const { profileEnd } = require('console');
 const app = express();
 // const dataRoute = require("./routes/dataRoute");
 
@@ -24,7 +25,7 @@ app.use(express.json());
 app.post("/uploadData", upload.any("file"), DataController);
 
 app.get("/get_card_status", FetchController);
-
-app.listen(3000, () => {
-    console.log("listening on port 3000");
+const port = 3000 || process.env.PORT
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
 });

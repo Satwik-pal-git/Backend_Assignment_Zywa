@@ -20,7 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
-app.post("/uploadData", upload.single("file"), DataController);
+// app.post("/uploadData", upload.single("file"), DataController);
+app.post("/uploadData", upload.any("file"), DataController);
 
 app.get("/get_card_status", FetchController);
 
